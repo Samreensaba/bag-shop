@@ -7,14 +7,15 @@ const userSchema = mongoose.Schema({
   contact: Number,
   cart: {
     type: Array,
-    default: []
+    default: [],
   },
-  orders: {
-    type: Array,
-    default: []
-  },
-  isAdmin: Boolean,
-  picture: String
-})
+  orders: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "product",
+    },
+  ],
+  picture: String,
+});
 
 module.exports = mongoose.model("user", userSchema)
